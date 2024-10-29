@@ -29,7 +29,7 @@
   <section id="hero"
     class="hero w-100 h-100 p-3 mx-auto text-center d-flex justify-content-center align-items-center text-white">
     <main>
-      <h4>Kepada <span>Bapak/Ibu/Saudara/i, </span></h4>
+      <h2 >Kepada <span id="dynamicText" ></span></h2>
       <h1>Rain & Rahmah</h1>
       <p>Akan melangsungkan resepsi pernikahan dalam:</p>
       <div class="simply-countdown"></div>
@@ -486,6 +486,23 @@
     namaContainer.innerText = `${pronoun} ${nama},`.replace(/ ,$/, ',');
 
     document.querySelector('#nama').value = nama;
+  </script>
+
+  <script>
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    function updateTextFromURL() {
+        const toValue = getQueryParam('to');
+        if (toValue) {
+            document.getElementById('dynamicText').innerText = toValue;
+        }
+    }
+
+    // Call the function to update the text on page load
+    updateTextFromURL();
   </script>
 </body>
 
